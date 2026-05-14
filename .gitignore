@@ -1,0 +1,5 @@
+.DS_Store
+.local/share/fonts/.uuid 
+.ssh/
+terraform.tfstate*
+.terraform

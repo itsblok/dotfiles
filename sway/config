@@ -1,0 +1,131 @@
+# mod key
+set $mod mod4
+
+# directions
+set $left h
+set $down j
+set $up k
+set $right l
+
+# apps
+set $term ghostty
+set $menu rofi -show drun
+
+# background
+output * bg /home/blok/.config/background.jpg fill
+
+# input devices
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+input type:keyboard {
+    xkb_layout us
+    xkb_options caps:escape
+}
+
+# wayland environment
+set $wayland_env "SDL_VIDEODRIVER=wayland QT_QPA_PLATFORM=wayland XDG_SESSION_TYPE=wayland"
+exec_always /bin/sh -c 'export $wayland_env'
+
+# basic bindings
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec swaynag -t warning -m 'exit sway?' -B 'yes' 'swaymsg exit'
+
+# floating modifier
+floating_modifier $mod normal
+
+# focus bindings
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# move bindings
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# workspace bindings
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+
+# layout bindings
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# window mode bindings
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+# resize mode
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# hardware keys
+bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym Print exec grim
+
+# appearance
+gaps inner 5
+gaps outer 3
+default_border pixel 3
+font pango:"0xProto Nerd Font" Medium 16
+
+# class                 border    bground   text      indicator child_border
+client.focused          #afa193   #afa193   #f6f1ea   #afa193   #afa193
+client.focused_inactive #3a3a3a   #3a3a3a   #f6f1ea   #3a3a3a   #3a3a3a
+client.unfocused        #252525   #252525   #b8b2aa   #252525   #252525
+client.urgent           #3a3a3a   #d65c5c   #f6f1ea   #d65c5c   #d65c5c
+client.placeholder      #252525   #252525   #f6f1ea   #252525   #252525
+
+client.background       #101010
+
+# notifications
+exec mako
+
+# bar
+bar {
+    swaybar_command waybar
+    position top
+}
+
+# include extra configs
+include /etc/sway/config.d/*

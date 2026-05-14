@@ -1,0 +1,79 @@
+{
+    "layer": "bottom",
+    "position": "top",
+    "height": 20,
+    "spacing": 0,
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [
+        "custom/clock"
+    ],
+    "modules-right": [
+        "custom/cpu",
+        "custom/mem",
+        "custom/docker",
+        "custom/k8s",
+        "pulseaudio",
+        "battery",
+        "tray"
+    ],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "format": "{icon}{name}",
+        "format-icons": {
+            "default": " ",
+            "urgent": "!",
+            "focused": "*"
+        }
+    },
+    "sway/mode": {
+        "format": " {}"
+    },
+    "custom/clock": {
+        "format": "<span color='#252525'>[ </span>{text}<span color='#252525'> ]</span>",
+        "exec": "date +'%H:%M %A, %b %d' | awk '{print tolower($0)}'",
+        "tooltip": false,
+        "interval": 3
+    },
+    "custom/cpu": {
+        "format": "<span color='#252525'>[ </span><span color='#afa193'><b>cpu:</b></span> {text}%",
+        "exec": "/home/blok/.config/waybar/scripts/cpu.sh",
+        "tooltip": false,
+        "interval": 2
+    },
+    "custom/mem": {
+        "format": "<span color='#252525'> / </span><span color='#afa193'><b>mem:</b></span> {text}%",
+        "exec": "/home/blok/.config/waybar/scripts/mem.sh",
+        "tooltip": false,
+        "interval": 5
+    },
+    "custom/docker": {
+        "format": "<span color='#252525'> / </span><span color='#afa193'><b>docker:</b></span> {text}",
+        "exec": "/home/blok/.config/waybar/scripts/docker.sh",
+        "tooltip": false,
+        "interval": 5
+    },
+    "custom/k8s": {
+        "format": "<span color='#252525'> / </span><span color='#afa193'><b>k8s:</b></span> {text}",
+        "exec": "/home/blok/.config/waybar/scripts/k8s.sh",
+        "tooltip": false,
+        "interval": 10
+    },
+    "pulseaudio": {
+        "format": "<span color='#252525'> / </span><span color='#afa193'><b>vol:</b></span> {volume}%",
+        "format-muted": "<span color='#afa193'><b>vol:</b></span> {volume}% (m)"
+    },
+    "battery": {
+        "format": "<span color='#252525'> / </span><span color='#afa193'><b>bat:</b></span> {capacity}%<span color='#252525'> ]</span>",
+        "format-charging": "<span color='#252525'> / </span><span color='#afa193'><b>ac:</b></span> {capacity}%<span color='#252525'> ]</span>",
+        "tooltip": false,
+        "interval": 20
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 7,
+        "tooltip": false
+    }
+}
