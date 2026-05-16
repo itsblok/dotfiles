@@ -100,6 +100,16 @@
   programs.direnv.enable = true;
 
   virtualisation.docker.enable = true;
+  virtualisation.containerd.enable = true;
+
+  services.k3s = {
+    enable = true;
+    role = "server";
+
+    extraFlags = toString [
+      "--disable=traefik"
+    ];
+  };
 
   # packages
   nixpkgs.config.allowUnfree = true;
@@ -109,15 +119,24 @@
     curl
     git
 
+    hugo
     gcc
     gnumake
     cmake
     nodejs
+    yarn
+    pnpm
+    bun
     go
     gopls
     delve
     rustup
     protobuf
+    kubectl
+    kubernetes-helm
+    k9s
+    k3s
+    jq
 
     ripgrep
     eza
@@ -156,7 +175,7 @@
 
     vim
     neovim
-
+    
     stow
     tmux
     bluez
