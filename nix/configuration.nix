@@ -99,6 +99,7 @@
   programs.starship.enable = true;
   programs.direnv.enable = true;
 
+  services.cloudflare-warp.enable = true;
   virtualisation.docker.enable = true;
   virtualisation.containerd.enable = true;
 
@@ -119,7 +120,6 @@
     curl
     git
 
-    hugo
     gcc
     gnumake
     cmake
@@ -136,12 +136,13 @@
     kubernetes-helm
     k9s
     k3s
-    jq
-
+    
+    bottom
     ripgrep
     eza
     bat
     fd
+    jq
     fzf
     lazygit
     tldr
@@ -152,7 +153,6 @@
     terraform
 
     ghostty
-    foot
     waybar
     rofi
     mako
@@ -164,6 +164,7 @@
     pavucontrol
     brightnessctl
 
+    vlc
     brave
     discord
     slack
@@ -174,27 +175,27 @@
     stripe-cli
 
     vim
-    neovim
-    
+    neovim   
+
     stow
     tmux
     bluez
     blueman
-
-    nerd-fonts._0xproto
   ];
 
   fonts = {
     packages = with pkgs; [
       nerd-fonts._0xproto
       ibm-plex
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
       openmoji-color
     ];
 
     fontconfig.defaultFonts = {
-      sansSerif = [ "IBM Plex Sans" ];
-      serif = [ "IBM Plex Serif" ];
-      monospace = [ "0xProto Nerd Font" ];
+      sansSerif = [ "IBM Plex Sans" "Noto Sans CJK SC" "Noto Sans CJK TC" ];
+      serif = [ "IBM Plex Serif" "Noto Serif CJK SC" "Noto Serif CJK TC" ];
+      monospace = [ "0xProto Nerd Font" "Noto Sans Mono CJK SC" "Noto Sans Mono CJK TC" ];
       emoji = [ "OpenMoji Color" ];
     };
   };
