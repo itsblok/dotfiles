@@ -12,7 +12,7 @@ set $term ghostty
 set $menu rofi -show drun
 
 # background
-output * bg /home/blok/.config/background.jpg fill
+output * bg /home/chimney/.config/background.jpg fill
 
 # input devices
 input type:touchpad {

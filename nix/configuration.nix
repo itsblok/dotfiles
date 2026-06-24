@@ -49,7 +49,7 @@
     pulse.enable = true;
   };
 
-  users.users.blok = {
+  users.users.chimney = {
     isNormalUser = true;
     shell = pkgs.fish;
 
