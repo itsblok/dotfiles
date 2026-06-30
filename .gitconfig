@@ -1,7 +1,7 @@
 [user]
 	email = hi@ilkem.space
-	name = ilkem
-	signingkey = /home/blok/.ssh/id_ed25519.pub
+	name = chimney
+	signingkey = /home/chimney/.ssh/id_ed25519.pub
 [oh-my-zsh]
 	prefix-length = 0
 	prefix-regex = [^-]*-
@@ -27,7 +27,7 @@
 [pull]
 	rebase = true
 [github]
-	user = itsblok
+	user = cheemney
 [url "git@github.com:"]
     insteadOf = https://github.com/
 [push]
